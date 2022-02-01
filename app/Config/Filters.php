@@ -6,6 +6,8 @@ use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
 use CodeIgniter\Filters\Honeypot;
+use CodeIgniter\Filters\InvalidChars;
+use CodeIgniter\Filters\SecureHeaders;
 
 class Filters extends BaseConfig
 {
@@ -16,9 +18,14 @@ class Filters extends BaseConfig
      * @var array
      */
     public $aliases = [
-        'csrf'     => CSRF::class,
-        'toolbar'  => DebugToolbar::class,
-        'honeypot' => Honeypot::class,
+        'csrf'          => CSRF::class,
+        'toolbar'       => DebugToolbar::class,
+        'honeypot'      => Honeypot::class,
+        'invalidchars'  => InvalidChars::class,
+        'secureheaders' => SecureHeaders::class,
+		'LoginFilter' => \App\Filters\LoginFilter::class,
+		'SessionFilter' => \App\Filters\SessionFilter::class,
+		'AdminFilter' => \App\Filters\AdminFilter::class
     ];
 
     /**
@@ -30,11 +37,13 @@ class Filters extends BaseConfig
     public $globals = [
         'before' => [
             // 'honeypot',
-            // 'csrf',
+            'csrf'
+            // 'invalidchars',
         ],
         'after' => [
             'toolbar',
             // 'honeypot',
+            // 'secureheaders',
         ],
     ];
 
@@ -58,5 +67,21 @@ class Filters extends BaseConfig
      *
      * @var array
      */
-    public $filters = [];
+    public $filters = [
+		"LoginFilter" => [
+			"before" => [
+				"/"
+			]
+		],
+		"SessionFilter" => [
+			"before" => [
+				
+			]
+		],
+		"AdminFilter" => [
+			"before" => [
+				
+			]
+		]
+	];
 }

@@ -13,7 +13,7 @@
             $session = session();
             
             if ($session->get('usuario'))
-                return redirect()->to(base_url('/menu'));
+                return redirect()->to(base_url('/dashboard'));
         }
 
         public function after(RequestInterface $request, ResponseInterface $response, $arguments = null){}

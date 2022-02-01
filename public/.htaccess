@@ -36,7 +36,7 @@ Options All -Indexes
 	# Ensure Authorization header is passed along
 	RewriteCond %{HTTP:Authorization} .
 	RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-
+	
 	# Set Environment
 	SetEnv CI_ENVIRONMENT development
 	# SetEnv CI_ENVIRONMENT testing

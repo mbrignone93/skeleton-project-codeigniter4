@@ -17,7 +17,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Auth\AuthController');
+$routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -31,7 +31,21 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+// rutas modulo controlador de errores
+$routes->get('/error/404', 'Error\ErrorController::error404');
+$routes->get('/error/403', 'Error\ErrorController::error403');
+
+// rutas modulo controlador de autenticacion
 $routes->get('/', 'Auth\AuthController::index');
+$routes->post('/auth/login', 'Auth\AuthController::login');
+$routes->get('/auth/logout', 'Auth\AuthController::logout');
+$routes->post('/auth/changePassword', 'Auth\AuthController::changePassword');
+$routes->post('/auth/resetPassword', 'Auth\AuthController::resetPassword');
+
+// ruta menu principal
+$routes->get('/menu', 'Menu\MenuController::index');
+
 
 /*
  * --------------------------------------------------------------------

@@ -43,11 +43,11 @@
 								'apellido'  => $row->Apellido,
 								'nombre'    => $row->Nombre,
 								'sexo'		=> $row->Sexo,
-								'usuario'   => $row->Username,
+								'usuario'   => $row->Usuario,
 								'pass_temp' => $row->Password_Temp,
 								'id'	    => $row->Id,
 								'id_rol'	=> $row->Id_Rol,
-								'sucursal'	=> $row->Sucursal
+								'skin'	    => $row->Skin
 							];
 								
 							$session->set($dataSession);
